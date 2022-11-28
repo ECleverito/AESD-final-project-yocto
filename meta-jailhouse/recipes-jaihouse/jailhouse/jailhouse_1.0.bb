@@ -4,19 +4,13 @@ SECTION = "jailhouse"
 LICENSE = "GPL-2.0"
 
 LIC_FILES_CHKSUM = "file://COPYING;md5=9fa7f895f96bde2d47fd5b7d95b6ba4d \
-                 file://tools/root-cell-config.c.tmpl;beginline=6;endline=33;md5=2825581c1666c44a17955dc574cfbfb3 \
-                 file://include/jailhouse/hypercall.h;beginline=9;endline=36;md5=2825581c1666c44a17955dc574cfbfb3 \
-                 file://include/jailhouse/cell-config.h;beginline=9;endline=36;md5=2825581c1666c44a17955dc574cfbfb3 \
-                 file://include/arch/arm/asm/jailhouse_hypercall.h;beginline=9;endline=36;md5=2825581c1666c44a17955dc574cfbfb3 \
-                 file://include/arch/arm64/asm/jailhouse_hypercall.h;beginline=9;endline=36;md5=2825581c1666c44a17955dc574cfbfb3 \
-                 file://include/arch/x86/asm/jailhouse_hypercall.h;beginline=9;endline=36;md5=2825581c1666c44a17955dc574cfbfb3 \
-                 file://driver/jailhouse.h;beginline=9;endline=36;md5=2825581c1666c44a17955dc574cfbfb3 \
 "
 
 SRCBRANCH = "master"
 SRCREV = "54bac8558279e1aadb5bb5fe66941511aa34913a"
 
-SRC_URI = "https://github.com/evidence/linux-jailhouse-jetson"
+SRC_URI = "git://github.com/evidence/linux-jailhouse-jetson.git;protocol=ssh;branch=${SRCBRANCH}"
+SRC_URI[sha256sum] = "fd305d23779f4ae54aa184052d3995874bfb077e397cc306554ece4601206b7c"
 
 DEPENDS = " \
     make-native \
