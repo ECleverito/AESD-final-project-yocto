@@ -50,6 +50,9 @@ USER_SPACE_CFLAGS = '${CFLAGS} -DLIBEXECDIR=\\\"${libexecdir}\\\" \
 TOOLS_SRC_DIR = "${S}/tools"
 TOOLS_OBJ_DIR = "${S}/tools"
 
+FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
+FILES_${PN} += "${sysconfdir}/include/jailhouse/config.h"
+
 do_compile() {
     unset LDFLAGS
     oe_runmake V=1 CC="${CC}" \
@@ -89,6 +92,9 @@ do_install() {
     install ${B}/tools/jailhouse-gcov-extract ${D}${JH_DATADIR}/tools
     install ${B}/tools/jailhouse-hardware-check ${D}${JH_DATADIR}/tools
     install ${B}/inmates/tools/${JH_ARCH}/linux-loader.bin ${D}${INMATES_DIR}/tools/${JH_ARCH}
+
+    install -d ${D}/include/jailhouse/ 
+    install -m 0755 ${WORKDIR}/config.h ${D}/include/jailhouse/
 }
 
 PACKAGE_BEFORE_PN = "kernel-module-jailhouse pyjailhouse"
